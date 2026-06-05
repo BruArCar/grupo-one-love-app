@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#111318"/>
+  <circle cx="256" cy="250" r="154" fill="#ffcc4d"/>
+  <path fill="#111318" d="M256 357c-11-18-29-36-54-54-46-34-67-68-67-107 0-38 29-68 66-68 24 0 43 12 56 31 13-19 32-31 56-31 37 0 66 30 66 68 0 39-21 73-67 107-25 18-43 36-56 54z"/>
+  <path fill="#26d38b" d="M143 390h214c18 0 32 14 32 32s-14 32-32 32H143c-18 0-32-14-32-32s14-32 32-32z"/>
+  <text x="256" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="36" fill="#111318">ONE LOVE</text>
+</svg>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111318">
+  <meta name="description" content="PWA privada para gestionar Grupo One Love: bolos, cobros, técnica, ensayos, vídeos y showroom.">
+  <title>Grupo One Love</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">PWA privada</p>
+      <h1>Grupo One Love</h1>
+    </div>
+    <button id="installBtn" class="ghost small" hidden>Instalar</button>
+  </header>
+
+  <main>
+    <section id="inicio" class="view active" aria-labelledby="inicioTitle">
+      <h2 id="inicioTitle">Inicio</h2>
+      <div class="metric-grid">
+        <article class="metric">
+          <span>Urgente</span>
+          <strong id="urgentCount">0</strong>
+        </article>
+        <article class="metric">
+          <span>Pendiente</span>
+          <strong id="pendingMoney">0 EUR</strong>
+        </article>
+        <article class="metric">
+          <span>Seguimiento</span>
+          <strong id="followCount">0</strong>
+        </article>
+      </div>
+      <div class="panel">
+        <h3>Prioridades urgentes</h3>
+        <div id="urgentList" class="stack empty-aware"></div>
+      </div>
+      <div class="quick-grid">
+        <button data-nav="tecnica">Tecnica</button>
+        <button data-nav="ensayos">Ensayos</button>
+        <button data-nav="showroom">Showroom</button>
+        <button data-nav="radar">Radar</button>
+      </div>
+    </section>
+
+    <section id="bolos" class="view" aria-labelledby="bolosTitle">
+      <div class="section-title">
+        <h2 id="bolosTitle">Bolos</h2>
+        <button id="addBoloBtn">Nuevo bolo</button>
+      </div>
+      <form id="boloForm" class="panel form-grid" hidden>
+        <input name="fecha" type="date" aria-label="Fecha">
+        <input name="pueblo" placeholder="Pueblo" required>
+        <input name="cliente" placeholder="Cliente" required>
+        <input name="formato" placeholder="Formato">
+        <input name="precio" type="number" min="0" step="10" placeholder="Precio">
+        <input name="anticipo" type="number" min="0" step="10" placeholder="Anticipo">
+        <select name="estado" aria-label="Estado">
+          <option>Por confirmar</option>
+          <option>Presupuesto enviado</option>
+          <option>Cerrado</option>
+          <option>Pendiente anticipo</option>
+          <option>Pendiente cobrar</option>
+          <option>Cobrado</option>
+        </select>
+        <input name="paso" placeholder="Proximo paso">
+        <button type="submit">Guardar bolo</button>
+      </form>
+      <div id="bolosList" class="stack empty-aware"></div>
+    </section>
+
+    <section id="tecnica" class="view" aria-labelledby="tecnicaTitle">
+      <h2 id="tecnicaTitle">Tecnica offline</h2>
+      <div id="protocolButtons" class="button-list"></div>
+      <dialog id="protocolDialog">
+        <div class="dialog-head">
+          <h3 id="protocolTitle"></h3>
+          <button id="closeProtocol" class="ghost small">Cerrar</button>
+        </div>
+        <ol id="protocolSteps"></ol>
+      </dialog>
+      <div class="panel">
+        <h3>Equipo tecnico</h3>
+        <div id="gearList" class="tag-list"></div>
+      </div>
+    </section>
+
+    <section id="checklists" class="view" aria-labelledby="checkTitle">
+      <h2 id="checkTitle">Checklists</h2>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Sonido</h3>
+          <div id="soundChecklist" class="checklist"></div>
+        </div>
+        <div class="panel">
+          <h3>Luces</h3>
+          <div id="lightChecklist" class="checklist"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ensayos" class="view" aria-labelledby="ensayosTitle">
+      <div class="section-title">
+        <h2 id="ensayosTitle">Ensayos</h2>
+        <button id="makeRehearsal">Ensayo 45 min</button>
+      </div>
+      <div class="segmented" id="singerFilter">
+        <button class="active" data-singer="Todos">Todos</button>
+        <button data-singer="Bruno">Bruno</button>
+        <button data-singer="Wendy">Wendy</button>
+        <button data-singer="Rosa">Rosa</button>
+      </div>
+      <div id="songList" class="stack"></div>
+      <div class="panel">
+        <h3>Plan generado</h3>
+        <ol id="rehearsalPlan"></ol>
+      </div>
+    </section>
+
+    <section id="videos" class="view" aria-labelledby="videosTitle">
+      <div class="section-title">
+        <h2 id="videosTitle">Central de videos</h2>
+        <button id="addClipBtn">Nuevo clip</button>
+      </div>
+      <form id="clipForm" class="panel form-grid" hidden>
+        <input name="nombre" placeholder="Nombre del clip" required>
+        <select name="energia" aria-label="Energia">
+          <option>Alta</option>
+          <option>Media</option>
+          <option>Baja</option>
+        </select>
+        <input name="sirve" placeholder="Sirve para">
+        <input name="hook" placeholder="Hook recomendado">
+        <textarea name="texto" placeholder="Texto comercial recomendado"></textarea>
+        <input name="hashtags" placeholder="Hashtags">
+        <button type="submit">Guardar clip</button>
+      </form>
+      <div id="clipsList" class="stack empty-aware"></div>
+    </section>
+
+    <section id="showroom" class="view" aria-labelledby="showroomTitle">
+      <h2 id="showroomTitle">Showroom digital</h2>
+      <div class="panel">
+        <h3>Mensaje base</h3>
+        <p id="baseWhatsapp"></p>
+        <button data-copy="#baseWhatsapp">Copiar WhatsApp</button>
+      </div>
+      <div id="formatsList" class="stack"></div>
+    </section>
+
+    <section id="radar" class="view" aria-labelledby="radarTitle">
+      <h2 id="radarTitle">Radar de bolos</h2>
+      <div class="panel">
+        <h3>Mensaje comercial rapido</h3>
+        <p id="salesMessage"></p>
+        <button data-copy="#salesMessage">Copiar mensaje</button>
+      </div>
+      <div id="searchList" class="stack"></div>
+    </section>
+
+    <section id="dashboard" class="view" aria-labelledby="dashTitle">
+      <h2 id="dashTitle">Dashboard</h2>
+      <div class="metric-grid dashboard-grid">
+        <article class="metric"><span>Bolos cerrados</span><strong id="closedShows">0</strong></article>
+        <article class="metric"><span>Oportunidades vivas</span><strong id="liveOpps">0</strong></article>
+        <article class="metric"><span>Dinero pendiente</span><strong id="dashPending">0 EUR</strong></article>
+        <article class="metric"><span>Presupuestos enviados</span><strong id="sentBudgets">0</strong></article>
+        <article class="metric"><span>Clientes calientes</span><strong id="hotClients">0</strong></article>
+      </div>
+      <div class="panel">
+        <h3>Proxima accion recomendada</h3>
+        <p id="nextAction"></p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegacion principal">
+    <button class="active" data-nav="inicio">Inicio</button>
+    <button data-nav="bolos">Bolos</button>
+    <button data-nav="tecnica">Tecnica</button>
+    <button data-nav="checklists">Listas</button>
+    <button data-nav="dashboard">Panel</button>
+  </nav>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

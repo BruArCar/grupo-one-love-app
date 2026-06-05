@@ -1,0 +1,19 @@
+{
+  "name": "Grupo One Love App",
+  "short_name": "One Love",
+  "description": "PWA privada para gestionar bolos, tecnica, ensayos, videos, showroom y radar comercial de Grupo One Love.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1115",
+  "theme_color": "#111318",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
