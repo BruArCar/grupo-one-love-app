@@ -1,5 +1,5 @@
 const STORAGE_KEY = "grupo-one-love-v1";
-const APP_VERSION = "2026.06.seed-v2";
+const APP_VERSION = "2026.06.seed-v3";
 
 const states = [
   "Por confirmar",
@@ -12,7 +12,7 @@ const states = [
 
 const seedBolos = [
   ["2026-06-20", "Càlig", "A.M.P.A. Càlig", "Dúo / opción discomóvil", 350, 0, "Por confirmar", "Hacer seguimiento. Todavía no saben si lo harán."],
-  ["2026-06-23", "Batea", "Abel / Batea", "Trío · Rosa / Wendy / Bruno", 700, 100, "Cerrado", "Preparar repertorio, intros, recibí del anticipo, horario, ubicación, toma eléctrica y montaje."],
+  ["2026-06-23", "Batea", "Abel / Batea", "Trío · Rosa / Wendy / Bruno", 700, 100, "Cerrado", "Recibí entregado y anticipo de 100 EUR cobrado. Pendiente real: 600 EUR. Confirmar horario, ubicación, toma eléctrica y montaje."],
   ["2026-07-18", "El Pont de Suert", "Olaya", "Dúo tardeo 19:00-21:00", 700, 0, "Presupuesto enviado", "Hacer seguimiento y confirmar si acepta el precio."],
   ["2026-07-25", "Tarragona", "Barrios / empresa eventos", "Pendiente confirmar formato", 0, 0, "Por confirmar", "Pedir horario, ubicación, formato exacto, equipo necesario y precio final."],
   ["2026-08-08", "Cuesta del Rato", "Sandra", "Pendiente", 400, 0, "Cerrado", "Confirmar horario, ubicación, toma eléctrica y forma de pago."],
@@ -48,7 +48,7 @@ const seedBolos = [
 const seedTasks = [
   { id: "seed-task-1", cliente: "AMPA Càlig", estado: "No saben todavía si lo harán", prioridad: "Alta", accion: "Seguimiento sin presionar demasiado." },
   { id: "seed-task-2", cliente: "Alejandra", estado: "Contactada", prioridad: "Media", accion: "Esperar respuesta o seguimiento si pasan varios días." },
-  { id: "seed-task-3", cliente: "Batea", estado: "Anticipo de 100 EUR recibido", prioridad: "Alta", accion: "Preparar recibí, controlar pendiente de 600 EUR, pedir horario, ubicación y toma eléctrica." },
+  { id: "seed-task-3", cliente: "Batea", estado: "Recibí entregado. Anticipo de 100 EUR cobrado. Pendiente: 600 EUR", prioridad: "Alta", accion: "Controlar pendiente de 600 EUR y confirmar horario, ubicación, toma eléctrica y montaje." },
   { id: "seed-task-4", cliente: "Motoclub Càlig", estado: "Cerrado", prioridad: "Alta", accion: "Actuación a las 10:00. Pagan allí en mano." },
   { id: "seed-task-5", cliente: "Olaya / El Pont de Suert", estado: "Presupuesto enviado", prioridad: "Alta", accion: "Seguimiento comercial." }
 ];
@@ -139,23 +139,41 @@ const soundItems = gearGroups.Sonido;
 const lightItems = gearGroups.Luces;
 
 const songs = [
-  { title: "Amigo", singer: "Bruno", level: "repertorio 23/06" },
-  { title: "La perla", singer: "Wendy", level: "repertorio 23/06" },
-  { title: "Pasodoble Rosa", singer: "Rosa", level: "pasodoble" },
-  { title: "Un beso", singer: "Wendy", level: "repertorio 23/06" },
-  { title: "La morocha", singer: "Bruno", level: "repertorio 23/06" },
+  { title: "Pasodoble Rosa", singer: "Rosa", level: "inicio pasodoble" },
+  { title: "Pasodoble Bruno", singer: "Bruno", level: "inicio pasodoble" },
+  { title: "Pasodoble Wendy", singer: "Wendy", level: "inicio pasodoble" },
+  { title: "Amigo", singer: "Bruno", level: "obligatoria Batea" },
+  { title: "La perla", singer: "Wendy", level: "obligatoria Batea" },
   { title: "Noche de copas", singer: "Rosa", level: "repertorio 23/06" },
-  { title: "20 de abril", singer: "Bruno", level: "repertorio 23/06" },
-  { title: "No se no se", singer: "Bruno", level: "repertorio 23/06" },
+  { title: "20 de abril", singer: "Bruno", level: "obligatoria Batea" },
+  { title: "Un beso", singer: "Wendy", level: "obligatoria Batea" },
+  { title: "Esa diva / La diva", singer: "Rosa", level: "obligatoria Batea" },
+  { title: "La morocha", singer: "Bruno", level: "obligatoria Batea" },
   { title: "Este amor ya no se toca", singer: "Wendy", level: "repertorio 23/06" },
   { title: "Waka Waka", singer: "Rosa", level: "repertorio 23/06" },
-  { title: "Esa diva / La diva", singer: "Rosa", level: "repertorio 23/06" },
+  { title: "No se no se", singer: "Bruno", level: "repertorio 23/06" },
+  { title: "La bilirrubina", singer: "Wendy", level: "latino fiesta" },
+  { title: "Mafiosa", singer: "Rosa", level: "energia alta" },
+  { title: "Caminando por la vida", singer: "Bruno", level: "buen rollo" },
+  { title: "Mamma Mia", singer: "Wendy", level: "clasico fiesta" },
+  { title: "Mentirosa", singer: "Rosa", level: "energia alta" },
+  { title: "Cuando tu vas", singer: "Wendy", level: "pop español" },
+  { title: "Rehab", singer: "Rosa", level: "internacional" },
+  { title: "Sweet Caroline", singer: "Todos", level: "participacion" },
+  { title: "Vivir mi vida", singer: "Bruno", level: "latino fiesta" },
+  { title: "Color esperanza", singer: "Todos", level: "participacion" },
+  { title: "Resistire", singer: "Todos", level: "participacion" },
+  { title: "La gozadera", singer: "Todos", level: "fiesta" },
+  { title: "I Will Survive", singer: "Wendy", level: "disco" },
+  { title: "A quien le importa", singer: "Rosa", level: "fiesta" },
+  { title: "Libre", singer: "Bruno", level: "fiesta clasico" },
+  { title: "Paquito el Chocolatero", singer: "Todos", level: "verbena" },
   { title: "Queen final", singer: "Todos", level: "final obligatorio" }
 ];
 
 const rehearsalNotes = [
-  "Formato: Trio · Rosa, Wendy y Bruno.",
-  "Alternar una cancion cada uno siempre que sea posible.",
+  "Formato: Trío · Rosa, Wendy y Bruno.",
+  "Alternar una canción cada uno siempre que sea posible.",
   "Meter pasodobles al principio.",
   "Bruno canta Amigo, 20 de abril y La morocha.",
   "Wendy canta La perla y Un beso.",
@@ -239,12 +257,20 @@ function clone(value) {
 }
 
 function normalizeData(value) {
+  const shouldMigrateSeed = value?.version !== APP_VERSION;
+  const mergeSeedList = (existing, seed) => {
+    if (!shouldMigrateSeed) return existing;
+    const userItems = existing.filter((item) => !String(item.id || "").startsWith("seed-"));
+    return [...clone(seed), ...userItems];
+  };
+
   return {
     ...clone(defaultData),
     ...value,
-    bolos: Array.isArray(value?.bolos) ? value.bolos : clone(defaultData.bolos),
-    clips: Array.isArray(value?.clips) ? value.clips : clone(defaultData.clips),
-    tasks: Array.isArray(value?.tasks) ? value.tasks : clone(defaultData.tasks),
+    version: APP_VERSION,
+    bolos: Array.isArray(value?.bolos) ? mergeSeedList(value.bolos, defaultData.bolos) : clone(defaultData.bolos),
+    clips: Array.isArray(value?.clips) ? mergeSeedList(value.clips, defaultData.clips) : clone(defaultData.clips),
+    tasks: Array.isArray(value?.tasks) ? mergeSeedList(value.tasks, defaultData.tasks) : clone(defaultData.tasks),
     checklists: {
       sonido: value?.checklists?.sonido || {},
       luces: value?.checklists?.luces || {}
@@ -256,7 +282,12 @@ function loadData() {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) return clone(defaultData);
   try {
-    return normalizeData(JSON.parse(stored));
+    const parsed = JSON.parse(stored);
+    const normalized = normalizeData(parsed);
+    if (parsed.version !== normalized.version) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+    }
+    return normalized;
   } catch {
     return clone(defaultData);
   }

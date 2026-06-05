@@ -1,4 +1,4 @@
-const CACHE_NAME = "grupo-one-love-app-v3";
+const CACHE_NAME = "grupo-one-love-app-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
